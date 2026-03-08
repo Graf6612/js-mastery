@@ -1,0 +1,129 @@
+/* --- Interview Mode Styles --- */
+
+.interview-mode-wrapper {
+  width: 100%;
+  max-width: 1400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.interview-timer-header {
+  position: sticky;
+  top: 20px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(30, 41, 59, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 15px 30px;
+  border-radius: 50px;
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+}
+
+.interview-timer-header.time-low {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.5);
+  color: #ef4444;
+  animation: pulse 1s infinite alternate;
+}
+
+.interview-timer-header strong {
+  font-family: 'Fira Code', monospace;
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+}
+
+@keyframes pulse {
+  from {
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.2);
+  }
+
+  to {
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.6);
+  }
+}
+
+.interview-content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.interview-intro {
+  text-align: center;
+}
+
+.intro-rules {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 30px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+.intro-rules h3 {
+  color: var(--primary);
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+}
+
+.intro-rules ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.intro-rules li {
+  position: relative;
+  padding-left: 25px;
+  color: var(--text-dim);
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+.intro-rules li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+  font-weight: bold;
+}
+
+.intro-rules strong {
+  color: var(--text-main);
+}
+
+.start-btn {
+  font-size: 1.2rem;
+  padding: 20px 40px;
+  justify-content: center;
+  font-weight: 600;
+  border-radius: 50px;
+}
+
+/* Selected option in Interview Theory phase */
+.selected-interview-option {
+  background: rgba(99, 102, 241, 0.25) !important;
+  border-color: var(--primary) !important;
+  transform: scale(1.01);
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+  color: #fff !important;
+}
+
+.selected-interview-option:hover {
+  background: rgba(99, 102, 241, 0.35) !important;
+}
+
+.interview-actions .submit-btn {
+  margin-top: 30px;
+  width: 100%;
+}

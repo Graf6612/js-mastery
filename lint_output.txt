@@ -1,0 +1,137 @@
+
+> js-online-test@0.0.0 lint
+> eslint .
+
+
+C:\Users\Бендера\Desktop\Js Online Test\src\App.jsx
+  31:10  error  'wrongAnswers' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          no-unused-vars
+  36:5   error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  34 |   useEffect(() => {
+  35 |     const savedStats = storage.get('quizStats', { totalTests: 0, totalScore: 0, totalQuestions: 0 });
+> 36 |     setStats(savedStats);
+     |     ^^^^^^^^ Avoid calling setState() directly within an effect
+  37 |   }, []);
+  38 |
+  39 |   const startQuiz = (topicsArray, count = 10) => {  react-hooks/set-state-in-effect
+
+C:\Users\Бендера\Desktop\Js Online Test\src\components\ChallengeDetail.jsx
+    8:9   error  'navigate' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        no-unused-vars
+   17:25  error  'storage' is not defined                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        no-undef
+   18:7   error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  16 |     if (challenge) {
+  17 |       const savedCode = storage.get(`code_${challenge.id}`, challenge.starterCode);
+> 18 |       setCode(savedCode);
+     |       ^^^^^^^ Avoid calling setState() directly within an effect
+  19 |       setIsSolved(storage.get(`solved_${challenge.id}`, 'false') === 'true');
+  20 |     }
+  21 |   }, [challenge]);  react-hooks/set-state-in-effect
+   19:19  error  'storage' is not defined                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        no-undef
+   28:7   error  'storage' is not defined                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        no-undef
+   79:7   error  'storage' is not defined                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        no-undef
+   83:5   error  'storage' is not defined                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        no-undef
+  134:15  error  'storage' is not defined                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        no-undef
+
+C:\Users\Бендера\Desktop\Js Online Test\src\components\ChallengesList.jsx
+  22:5  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  20 |       .filter(key => storage.get(key) === 'true')
+  21 |       .map(key => key.replace('solved_', ''));
+> 22 |     setSolvedTasks(solved);
+     |     ^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  23 |   }, []);
+  24 |
+  25 |   const categories = ['all', ...new Set(challenges.map(c => c.category))];  react-hooks/set-state-in-effect
+
+C:\Users\Бендера\Desktop\Js Online Test\src\components\History.jsx
+  9:5  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+   7 |   useEffect(() => {
+   8 |     const savedHistory = storage.get('quizHistory', []);
+>  9 |     setHistory(savedHistory);
+     |     ^^^^^^^^^^ Avoid calling setState() directly within an effect
+  10 |   }, []);
+  11 |
+  12 |   const formatDate = (isoString) => {  react-hooks/set-state-in-effect
+
+C:\Users\Бендера\Desktop\Js Online Test\src\components\MistakeReview.jsx
+  10:5  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+   8 |   useEffect(() => {
+   9 |     const savedMistakes = storage.get('quizMistakes', []);
+> 10 |     setMistakes(savedMistakes);
+     |     ^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  11 |   }, []);
+  12 |
+  13 |   if (mistakes.length === 0) return null;  react-hooks/set-state-in-effect
+
+C:\Users\Бендера\Desktop\Js Online Test\src\components\interview\InterviewChallenges.jsx
+  27:5  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  25 |     ];
+  26 |
+> 27 |     setSelectedChallenges(picked);
+     |     ^^^^^^^^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  28 |
+  29 |     // Initialize codes
+  30 |     const initialCodes = {};  react-hooks/set-state-in-effect
+
+C:\Users\Бендера\Desktop\Js Online Test\src\components\interview\InterviewResult.jsx
+  9:9  error  'challengesPercent' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\Бендера\Desktop\Js Online Test\src\hooks\useTimer.js
+  15:7  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  13 |     } else if (isActive && seconds === 0) {
+  14 |       clearInterval(interval);
+> 15 |       setIsActive(false);
+     |       ^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  16 |       if (onComplete) onComplete();
+  17 |     }
+  18 |     return () => clearInterval(interval);  react-hooks/set-state-in-effect
+
+✖ 16 problems (16 errors, 0 warnings)
+
