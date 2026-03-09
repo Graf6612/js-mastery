@@ -23,6 +23,7 @@ function Quiz({ questions, onFinish }) {
         ...wrongAnswers,
         {
           question: currentQuestion.question,
+          code: currentQuestion.code, // Save code snippet
           userAnswer: currentQuestion.options[index],
           correctAnswer: currentQuestion.options[currentQuestion.correctAnswer],
           theory: currentQuestion.theory,
@@ -53,6 +54,12 @@ function Quiz({ questions, onFinish }) {
       </div>
 
       <h2 id="question-text">{currentQuestion.question}</h2>
+
+      {currentQuestion.code && (
+        <div className="code-block">
+          <code className="code-text">{currentQuestion.code}</code>
+        </div>
+      )}
 
       <div className="options-container">
         {currentQuestion.options.map((option, index) => {

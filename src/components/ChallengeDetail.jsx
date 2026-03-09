@@ -19,6 +19,7 @@ function ChallengeDetail() {
   const [aiReview, setAiReview] = useState(null);
   const [isReviewLoading, setIsReviewLoading] = useState(false);
   const [showCommunity, setShowCommunity] = useState(false);
+  const [showHint, setShowHint] = useState(false);
 
   const fetchAiReview = async (userCode) => {
     setIsReviewLoading(true);
@@ -147,6 +148,32 @@ function ChallengeDetail() {
               </p>
             ))}
           </div>
+
+          {challenge.hint && (
+            <div className="hint-section" style={{ marginTop: '15px', marginBottom: '15px' }}>
+              <button
+                className="btn outline-btn small"
+                onClick={() => setShowHint(!showHint)}
+                style={{ fontSize: '0.8rem', padding: '5px 10px' }}
+              >
+                {showHint ? 'Приховати підказку' : '💡 Потрібна підказка?'}
+              </button>
+              {showHint && (
+                <div className="hint-text animate-fade-in" style={{
+                  marginTop: '10px',
+                  padding: '12px',
+                  background: 'rgba(255, 243, 205, 0.1)',
+                  borderLeft: '4px solid #ffc107',
+                  borderRadius: '4px',
+                  fontSize: '0.9rem',
+                  color: '#ffe69c'
+                }}>
+                  {challenge.hint}
+                </div>
+              )}
+            </div>
+          )}
+
           <div className="examples">
             <h3>Приклади:</h3>
             {challenge.examples.map((ex, i) => (

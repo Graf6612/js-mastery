@@ -8,6 +8,7 @@ export const challenges = [
     description: "Напишіть функцію, яка приймає два числа та повертає їх суму.\n\nЗавдання:\n1. Оголосіть параметри для двох чисел.\n2. Додайте їх за допомогою оператора `+`.\n3. Поверніть отриманий результат.",
     examples: ["sum(1, 2) // 3", "sum(10, -5) // 5"],
     functionName: "sum",
+    hint: "Використовуй оператор + для додавання двох чисел.",
     starterCode: "function sum(a, b) {\n  \n}",
     tests: [
       { input: [1, 2], expected: 3 },
@@ -38,6 +39,7 @@ export const challenges = [
     description: "Напишіть функцію, яка перевіряє, чи є передане число парним.\n\nЗавдання:\n1. Перевірте залишок від ділення числа на 2 (використовуйте оператор `%`).\n2. Якщо залишок дорівнює нулю — число парне. Поверніть рядок `'Even'`.\n3. У всіх інших випадках поверніть рядок `'Odd'`.",
     examples: ["evenOrOdd(2) // 'Even'", "evenOrOdd(7) // 'Odd'"],
     functionName: "evenOrOdd",
+    hint: "Оператор % (залишок від ділення) допоможе визначити парність. Якщо number % 2 === 0, то число парне.",
     starterCode: "function evenOrOdd(number) {\n  \n}",
     tests: [
       { input: [2], expected: "Even" },
@@ -69,6 +71,7 @@ export const challenges = [
     description: "Переверніть вхідний рядок (string) та поверніть його дзеркальне відображення.\n\nЗавдання:\n1. Перетворіть рядок у масив символів (наприклад, за допомогою `split('')`).\n2. Переверніть масив (метод `reverse()`).\n3. З'єднайте масив назад у рядок (метод `join('')`) і поверніть його.",
     examples: ["reverseString('hello') // 'olleh'"],
     functionName: "reverseString",
+    hint: "Тобі знадобляться три методи: split('') щоб розбити на масив, reverse() щоб перевернути його, та join('') щоб склеїти назад.",
     starterCode: "function reverseString(str) {\n  \n}",
     tests: [
       { input: ["hello"], expected: "olleh" },
@@ -99,6 +102,7 @@ export const challenges = [
     description: "Знайдіть та поверніть найбільше число у переданому масиві чисел.\n\nЗавдання:\n1. Переконайтеся, що масив не порожній.\n2. Використайте `Math.max` у поєднанні зі spread-оператором `...` або пройдіться масивом через цикл.\n3. Поверніть знайдене максимальне значення.",
     examples: ["findMax([1, 5, 2, 9, 3]) // 9"],
     functionName: "findMax",
+    hint: "Math.max(...arr) - найшвидший спосіб знайти максимум у масиві.",
     starterCode: "function findMax(arr) {\n  \n}",
     tests: [
       { input: [[1, 5, 2, 9, 3]], expected: 9 },
@@ -129,6 +133,7 @@ export const challenges = [
     description: "Функція має рахувати загальну кількість голосних літер `a, e, i, o, u` (англійського алфавіту) у заданому рядку.\n\nЗавдання:\n1. Ініціалізуйте лічильник нулем.\n2. Пройдіться по всіх символах рядка (можна перетворити їх на нижній регістр).\n3. Якщо символ є голосною — збільште лічильник.\n4. Поверніть фінальне значення лічильника.",
     examples: ["countVowels('hello') // 2", "countVowels('javascript') // 3"],
     functionName: "countVowels",
+    hint: "Можна використати цикл for...of та перевіряти, чи входить символ у рядок 'aeiou' через метод .includes().",
     starterCode: "function countVowels(str) {\n  \n}",
     tests: [
       { input: ["hello"], expected: 2 },
@@ -160,6 +165,7 @@ export const challenges = [
     description: "Створіть новий масив, у якому будуть залишені лише унікальні елементи з переданого масиву (всі дублікати мають бути видалені).\n\nЗавдання:\n1. Створіть об'єкт `Set`, передавши йому початковий масив — він автоматично відфільтрує дублікати.\n2. Перетворіть `Set` назад у звичайний масив (за допомогою `Array.from()` або оператора `...`).\n3. Поверніть новий масив.",
     examples: ["removeDuplicates([1, 2, 2, 3]) // [1, 2, 3]"],
     functionName: "removeDuplicates",
+    hint: "new Set(arr) автоматично видалить усі дублікати. Залишиться тільки перетворити його назад у масив.",
     starterCode: "function removeDuplicates(arr) {\n  \n}",
     tests: [
       { input: [[1, 2, 2, 3]], expected: [1, 2, 3],
@@ -191,6 +197,7 @@ export const challenges = [
     description: "Напишіть функцію, що приймає масив чисел і повертає їх загальну суму.\n\nЗавдання:\n1. Якщо масив порожній — відразу поверніть 0.\n2. Використайте метод масиву `reduce()` (або звичайний цикл `for`) для поступового додавання кожного числа до загальної суми.\n3. Поверніть фінальну суму.",
     examples: ["sumArray([1, 2, 3]) // 6"],
     functionName: "sumArray",
+    hint: "Метод .reduce((acc, curr) => acc + curr, 0) ідеально підходить для розрахунку суми.",
     starterCode: "function sumArray(arr) {\n  \n}",
     tests: [
       { input: [[1, 2, 3]], expected: 6 },
@@ -221,6 +228,7 @@ export const challenges = [
     description: "Функція має повертати переданий рядок, але з першою літерою, перетвореною на верхній регістр (велику).\n\nЗавдання:\n1. Врахуйте кейс, коли рядок порожній — тоді просто поверніть його ж.\n2. Візьміть перший символ (`str[0]`) та переведіть його у верхній регістр (`toUpperCase()`).\n3. Додайте до нього решту рядка (`str.slice(1)`).\n4. Поверніть з'єднаний результат.",
     examples: ["capitalize('hello') // 'Hello'"],
     functionName: "capitalize",
+    hint: "Використай str[0].toUpperCase() та додай результат slice(1).",
     starterCode: "function capitalize(str) {\n  \n}",
     tests: [
       { input: ["hello"], expected: "Hello" },
@@ -252,6 +260,7 @@ export const challenges = [
     description: "Знайдіть та поверніть найменше число у переданому масиві чисел.\n\nЗавдання:\nАналогічно до пошуку максимуму, ви можете використати вбудований метод `Math.min` разом з оператором розширення `...` масиву, або написати логіку порівняння через цикл `for`.",
     examples: ["findSmallest([34, 15, 88, 2]) // 2"],
     functionName: "findSmallest",
+    hint: "Спробуй Math.min(...arr) для швидкого пошуку найменшого значення.",
     starterCode: "function findSmallest(arr) {\n  \n}",
     tests: [
       { input: [[34, 15, 88, 2]], expected: 2 },
@@ -282,6 +291,7 @@ export const challenges = [
     description: "Паліндром — це слово, фраза або послідовність, яка читається однаково як зліва направо, так і справа наліво.\n\nЗавдання:\n1. Для цієї базової задачі вам достатньо перевернути рядок.\n2. Порівняйте початковий рядок із перевернутим варіантом.\n3. Поверніть `true`, якщо вони збігаються, інакше — `false`.",
     examples: ["isPalindrome('racecar') // true", "isPalindrome('hello') // false"],
     functionName: "isPalindrome",
+    hint: "Переверни рядок і порівняй його з оригіналом. Якщо вони однакові - це паліндром.",
     starterCode: "function isPalindrome(str) {\n  \n}",
     tests: [
       { input: ["racecar"], expected: true },
@@ -315,6 +325,7 @@ export const challenges = [
     description: "Напишіть функцію, яка перетворює вкладений масив (будь-якого рівня вкладеності) на одномірний (плоский) масив.\n\nЗавдання:\n1. Використайте рекурсію для проходження масиву.\n2. Якщо поточний елемент — масив (`Array.isArray(item)`), викличте функцію рекурсивно.\n3. Інакше — додайте елемент до акумулятора.\n4. (Або скористайтесь вбудованим `arr.flat(Infinity)`).",
     examples: ["flatten([1, [2, [3, 4]]]) // [1, 2, 3, 4]"],
     functionName: "flatten",
+    hint: "Для рекурсивного підходу: перевіряй Array.isArray(item). Для швидкого - використай метод .flat(Infinity).",
     starterCode: "function flatten(arr) {\n  \n}",
     tests: [
       { input: [[1, [2, [3, 4]]]], expected: [1, 2, 3, 4],
@@ -346,6 +357,7 @@ export const challenges = [
     description: "Напишіть функцію, яка розбиває великий масив на менші масиви (chunks) вказаного розміру `size`.\n\nЗавдання:\n1. Створіть порожній масив-результат.\n2. Проходьтесь початковим масивом за допомогою циклу `for` або `while`, збільшуючи індекс одразу на значення `size`.\n3. На кожній ітерації використовуйте `slice()`, щоб відрізати частину до масиву-результату.",
     examples: ["chunk([1, 2, 3, 4], 2) // [[1, 2], [3, 4]]"],
     functionName: "chunk",
+    hint: "Цикл for з кроком i += size та метод .slice(i, i + size) допоможуть розділити масив на частини.",
     starterCode: "function chunk(arr, size) {\n  \n}",
     tests: [
       { input: [[1, 2, 3, 4], 2], expected: [[1, 2], [3, 4]],
@@ -377,6 +389,7 @@ export const challenges = [
     description: "Поверніть новий масив, що містить лише унікальні значення з переданого масиву.\n\nЗавдання:\n1. Найпростіший сучасний спосіб: використати `new Set(arr)` та перетворити його назад у масив (через спред `...` або `Array.from`).\n2. Або використайте `filter()` та `indexOf()`, залишаючи лише ті елементи, чий перший індекс збігається з поточним.",
     examples: ["unique([1, 2, 2, 3]) // [1, 2, 3]"],
     functionName: "unique",
+    hint: "Використай [...new Set(arr)] для отримання масиву унікальних значень.",
     starterCode: "function unique(arr) {\n  \n}",
     tests: [
       { input: [[1, 2, 2, 3]], expected: [1, 2, 3],
@@ -408,6 +421,7 @@ export const challenges = [
     description: "Підрахуйте кількість входжень кожного символу у рядку і поверніть результат як об'єкт (де ключ — символ, значення — кількість).\n\nЗавдання:\n1. Перетворіть рядок у масив (або просто проітеруйте по ньому через `for...of`).\n2. Використайте `reduce` (або просто `forEach` з локальним об'єктом).\n3. Для кожного символу перевіряйте, чи він вже існує в об'єкті: якщо так — збільште значення на 1, якщо ні — встановіть 1.",
     examples: ["countChars('hello') // {h: 1, e: 1, l: 2, o: 1}"],
     functionName: "countChars",
+    hint: "Створи порожній об'єкт {} і в циклі перевіряй кожну літеру: якщо вона вже є в об'єкті - додай 1, якщо ні - встанови 1.",
     starterCode: "function countChars(str) {\n  \n}",
     tests: [
       { input: ["hello"], expected: { h: 1, e: 1, l: 2, o: 1 } },
@@ -439,6 +453,7 @@ export const challenges = [
     description: "Напишіть функцію `groupBy`, яка групує масив об'єктів за вказаною властивістю.\n\nЗавдання:\n1. Створіть порожній об'єкт або використовуйте `reduce`.\n2. Пройдіться по кожному об'єкту масиву.\n3. Отримайте значення поточного об'єкта за ключем `prop`.\n4. Якщо у результаті ще немає такого ключа — створіть для нього порожній масив `[]`.\n5. Додайте («пушніть») поточний об'єкт у цей масив.",
     examples: ["groupBy([{id: 1, group: 'A'}, {id: 2, group: 'A'}, {id: 3, group: 'B'}], 'group') // { A: [...], B: [...] }"],
     functionName: "groupBy",
+    hint: "Використовуй .reduce() для створення об'єкта, де ключі - це значення властивості prop, а значення - масиви об'єктів.",
     starterCode: "function groupBy(arr, prop) {\n  \n}",
     tests: [
       { 
@@ -475,6 +490,7 @@ export const challenges = [
     description: "Напишіть функцію-обгортку `debounce`, яка затримує виконання функції, поки не мине заданий час `ms` з моменту останнього виклику.\n\nЗавдання:\n1. `debounce` має повертати нову функцію (замикання, closure).\n2. Всередині зберігайте таймер (ідентифікатор `setTimeout`).\n3. Коли обгортка викликається, вона повинна очищати попередній таймер (`clearTimeout`) та створювати новий, який вже і викличе оригінальну функцію.\nРішення перевіряється на те, чи повертається дійсно функція.",
     examples: ["const d = debounce(fn, 1000);"],
     functionName: "debounce",
+    hint: "Тобі потрібно повертати функцію, яка при кожному виклику очищує попередній таймер через clearTimeout і запускає новий.",
     starterCode: "function debounce(fn, ms) {\n  return function(...args) {\n    // твій код\n  }\n}",
     tests: [
       // Since evaluating setTimeout synchronously is tricky in this env, we just check if it returns a function
@@ -504,6 +520,7 @@ export const challenges = [
     description: "Напишіть функцію-обгортку `throttle`, яка змушує функцію виконуватись не частіше ніж раз на вказаний час `ms`.\n\nЗавдання:\n1. Як і debounce, вона має повертати нову функцію.\n2. Зберігайте прапорець (наприклад, `isWaiting`), що вказує, чи триває зараз пауза.\n3. Якщо паузи немає, викликайте оригінальну функцію і встановлюйте прапорець.\n4. Запускайте таймер, після завершення якого прапорець зніметься.",
     examples: ["const t = throttle(fn, 500);"],
     functionName: "throttle",
+    hint: "Використовуй прапорець-запобіжник: якщо він true - ігноруй виклик, якщо false - виконуй функцію і став запобіжник на паузу через setTimeout.",
     starterCode: "function throttle(fn, ms) {\n  return function(...args) {\n    // твій код\n  }\n}",
     tests: [
       { input: [() => {}, 100], expected: "function" }
@@ -532,6 +549,7 @@ export const challenges = [
     description: "Реалізуйте глибоку копію (Deep Clone) об'єкта чи масиву (вкладені об'єкти повинні ставати новими екземплярами, а не посиланнями).\n\nЗавдання:\n1. Перевіряйте тип даних: якщо значення об'єкт (і не `null` чи масив), рекурсивно копіюйте його властивості.\n2. Якщо це масив — так само рекурсивно створюйте масив клонів.\n3. Просте сучасне рішення (якщо немає функцій): `structuredClone(obj)` або `JSON.parse(JSON.stringify(obj))`.",
     examples: ["deepClone({a: 1, b: {c: 2}})"],
     functionName: "deepClone",
+    hint: "Накращий спосіб для глибокого копіювання - це рекурсія. Або, якщо дані прості, structuredClone(obj).",
     starterCode: "function deepClone(obj) {\n  \n}",
     tests: [
       { input: [{a: 1, b: {c: 2}}], expected: {a: 1, b: {c: 2}} },
@@ -562,6 +580,7 @@ export const challenges = [
     description: "Об'єднайте два об'єкти в один новий. Якщо обидва мають однакові ключі, пріоритет має значення з другого об'єкта.\n\nЗавдання:\n1. Можна використати `Object.assign({}, obj1, obj2)`.\n2. Або ж просто використайте оператор розширення (spread-operator): `{ ...obj1, ...obj2 }`.\n3. Поверніть створений об'єкт.",
     examples: ["merge({a: 1, b: 2}, {b: 3, c: 4}) // {a: 1, b: 3, c: 4}"],
     functionName: "merge",
+    hint: "Spread оператор {...obj1, ...obj2} - це найпопулярніший спосіб об'єднати два об'єкти.",
     starterCode: "function merge(obj1, obj2) {\n  \n}",
     tests: [
       { input: [{a: 1, b: 2}, {b: 3, c: 4}], expected: {a: 1, b: 3, c: 4} },
@@ -591,6 +610,7 @@ export const challenges = [
     description: "Вхідний масив містить послідовність унікальних чисел від 1 до N, але одне з чисел пропущене. Знайдіть його.\n\nЗавдання:\n1. Знайдіть довжину масиву `n` і додайте 1, щоб отримати очікувану кількість елементів (якби число не зникло).\n2. Використайте математичну формулу суми чисел від 1 до n: `n * (n + 1) / 2`.\n3. Порахуйте фактичну суму чисел у масиві.\n4. Відніміть фактичну суму від математичної — різниця і буде пропущеним числом.",
     examples: ["findMissing([1, 2, 4, 5]) // 3"],
     functionName: "findMissing",
+    hint: "Сума чисел від 1 до N обчислюється за формулою n * (n + 1) / 2. Різниця між цією сумою і сумою твого масиву і є пропущене число.",
     starterCode: "function findMissing(arr) {\n  \n}",
     tests: [
       { input: [[1, 2, 4, 5]], expected: 3 },
@@ -623,6 +643,7 @@ export const challenges = [
     description: "Напишіть власну реалізацію `Array.prototype.map` як окрему функцію `myMap(arr, fn)`.\n\nЗавдання:\n1. Створіть порожній масив-результат.\n2. Пройдіться циклом по всьому вхідному масиву `arr`.\n3. Викличте функцію `fn` для кожного елемента, передаючи їй сам елемент (та, за бажанням, індекс і весь масив).\n4. Додайте («пушніть») результат виконання `fn` у масив-результат і поверніть його.",
     examples: ["myMap([1, 2, 3], x => x * 2) // [2, 4, 6]"],
     functionName: "myMap",
+    hint: "Створи новий масив, пройдися по старому через for, і пуш в новий результат виклику fn(item).",
     starterCode: "function myMap(arr, fn) {\n  \n}",
     tests: [
       { input: [[1, 2, 3], (x) => x * 2], expected: [2, 4, 6],
@@ -654,6 +675,7 @@ export const challenges = [
     description: "Напишіть власну реалізацію `Array.prototype.filter` як окрему функцію `myFilter(arr, fn)`.\n\nЗавдання:\n1. Створіть порожній масив-результат.\n2. Пройдіться циклом по всіх елементах `arr`.\n3. Передавайте кожен елемент у `fn`. Якщо `fn(item)` повертає `true` (чи truthy-значення) — додайте елемент до масиву-результату.",
     examples: ["myFilter([1, 2, 3, 4], x => x % 2 === 0) // [2, 4]"],
     functionName: "myFilter",
+    hint: "Створи масив-результат і додавай туди елементи тільки якщо fn(item) повертає true.",
     starterCode: "function myFilter(arr, fn) {\n  \n}",
     tests: [
       { input: [[1, 2, 3, 4], (x) => x % 2 === 0], expected: [2, 4],
@@ -684,6 +706,7 @@ export const challenges = [
     description: "Напишіть власну реалізацію `Array.prototype.reduce` як окрему функцію `myReduce(arr, fn, initialValue)`.\n\nЗавдання:\n1. Ініціалізуйте акумулятор значенням `initialValue`.\n2. Якщо `initialValue` не передано, акумулятором стає перший елемент масиву, а цикл починається з індексу 1.\n3. Пройдіться циклом по елементах, на кожній ітерації оновлюючи акумулятор результатом `fn(acc, item, index, arr)`.\n4. Поверніть фінальний акумулятор.",
     examples: ["myReduce([1, 2, 3], (acc, x) => acc + x, 0) // 6"],
     functionName: "myReduce",
+    hint: "Акумулятор (acc) має оновлюватися на кожному кроці: acc = fn(acc, curr). Не забудь про початкове значення.",
     starterCode: "function myReduce(arr, fn, initialValue) {\n  \n}",
     tests: [
       { input: [[1, 2, 3], (acc, x) => acc + x, 0], expected: 6 },
@@ -714,6 +737,7 @@ export const challenges = [
     description: "Напишіть функцію `memoize`, що кешує результати виконання іншої функції. Це значно прискорює повторні обчислення для однакових аргументів.\n\nЗавдання:\n1. Поверніть функцію-обгортку (closure).\n2. Всередині створіть об'єкт або `Map` для кешу.\n3. При кожному виклику створюйте ключ (наприклад, `JSON.stringify(args)`) з ідентифікаторів переданих аргументів.\n4. Якщо ключ є в кеші — повертайте значення з кешу, інакше — виконуйте функцію, записуйте результат у кеш і повертайте його.",
     examples: ["const memoSum = memoize(sum);"],
     functionName: "memoize",
+    hint: "Використовуй об'єкт як сховище (кеш). Ключем може бути JSON.stringify(args).",
     starterCode: "function memoize(fn) {\n  \n}",
     tests: [
       { input: [(x) => x * 2], expected: "function" }
@@ -742,6 +766,7 @@ export const challenges = [
     description: "Напишіть функцію, що перевіряє два об'єкти на глибоку рівність.\n\nЗавдання:\n1. Якщо `obj1 === obj2`, вони рівні (базовий випадок).\n2. Якщо хоча б один з них не об'єкт або `null`, поверніть `false`.\n3. Перевірте кількість ключів (вона має збігатися).\n4. Пройдіться рекурсивно по всіх ключах і переконайтеся, що значення однакові (`isDeepEqual(obj1[key], obj2[key])`).",
     examples: ["isDeepEqual({a:1, b:{c:2}}, {a:1, b:{c:2}}) // true"],
     functionName: "isDeepEqual",
+    hint: "Для глибокої перевірки потрібна рекурсія. Порівнюй типи, кількість ключів, а потім кожне значення рекурсивно.",
     starterCode: "function isDeepEqual(obj1, obj2) {\n  \n}",
     tests: [
       { input: [{a: 1}, {a: 1}], expected: true },
@@ -773,6 +798,7 @@ export const challenges = [
     description: "Реалізуйте клас `EventEmitter` (або функцію-конструктор), що дозволяє підписуватись на події і генерувати їх. (Симульований тест).\n\nЗавдання:\n1. Зберігайте підписників у структурі типу `{ eventName: [listener1, listener2] }`.\n2. `on(eventName, listener)` додає функцію у масив підписників.\n3. `emit(eventName, ...args)` викликає всі функції з цього масиву.\n4. `off(eventName, listener)` видаляє конкретну функцію з масиву.\nЦей тест симульовано перевіряє, що ви повертаєте об'єкт EventEmitter.",
     examples: ["const ee = new EventEmitter();"],
     functionName: "createEE",
+    hint: "Зберігай масив функцій для кожної назви події. Метод on - додає в масив, emit - викликає всі функції з масиву.",
     starterCode: "function createEE() {\n  class EventEmitter {\n    // ...\n  }\n  return typeof new EventEmitter();\n}",
     tests: [
       { input: [], expected: "object" }
@@ -801,6 +827,7 @@ export const challenges = [
     description: "Реалізуйте власну версію `Promise.all` — функцію `myPromiseAll(promises)`.\n\nЗавдання:\n1. Поверніть новий Promise.\n2. Всередині слідкуйте за тим, скільки промісів успішно виконалися.\n3. Зберігайте їх результати у масив по індексах.\n4. Якщо хоча б один проміс завершився з помилкою — фейліть увесь `myPromiseAll` (робіть `reject`).\n5. Якщо всі успішні — `resolve(resultsArr)`.",
     examples: ["myPromiseAll([p1, p2])"],
     functionName: "myPromiseAll",
+    hint: "Тобі потрібно повернути new Promise і всередині рахувати кількість виконаних промісів. Результати зберігай у масив по індексах.",
     starterCode: "function myPromiseAll(promises) {\n  return 'promise';\n}",
     tests: [
       { input: [[]], expected: "promise" }
@@ -829,6 +856,7 @@ export const challenges = [
     description: "Реалізуйте функцію каррування (currying). Вона приймає звичайну функцію і дозволяє викликати її поетапно: `fn(a)(b)(c)` замість `fn(a, b, c)`.\n\nЗавдання:\n1. `curry(fn)` повертає функцію (назвемо її `curried`).\n2. Коли `curried` викликається, вона збирає аргументи.\n3. Якщо назбираних аргументів достатньо (`args.length >= fn.length`), викликай оригінальну `fn(...args)`.\n4. Якщо ні — повертай нову функцію, що додасть нові аргументи до вже зібраних і повторить перевірку.",
     examples: ["const curriedSum = curry(sum); curriedSum(1)(2)(3) // 6"],
     functionName: "curryTest",
+    hint: "Якщо назбираних аргументів достатньо - викликай функцію. Якщо ні - повертай нову функцію, що приймає решту аргументів.",
     starterCode: "function curryTest() {\n  return 'function';\n}",
     tests: [
       { input: [], expected: "function" }
@@ -857,6 +885,7 @@ export const challenges = [
     description: "Напишіть функцію `compose(f, g, h)` (чимало функцій), яка зшиває (компонує) їх у єдину.\n\nЗавдання:\n1. Композиція викликається справа наліво: `f(g(h(x)))`.\n2. Поверніть функцію, що отримує початкове значення `x`.\n3. Використайте `reduceRight` на масиві переданих функцій, передаючи кожній наступній результат попередньої.",
     examples: ["const f = compose(x => x+1, x => x*2); f(2) // 5"],
     functionName: "compose",
+    hint: "Спробуй fns.reduceRight((acc, fn) => fn(acc), x). Це дозволить виконати функції справа наліво.",
     starterCode: "function compose(...fns) {\n  return function(x) {\n    return fns.reduceRight((acc, fn) => fn(acc), x);\n  }\n}",
     tests: [
       { input: [(x) => x + 1, (x) => x * 2], expected: "function" }
@@ -885,6 +914,7 @@ export const challenges = [
     description: "Реалізуйте структуру даних LRU (Least Recently Used) Cache.\n\nЗавдання:\n1. Кеш має максимальну ємність `capacity`.\n2. Метод `get(key)` повертає значення (та робить елемент 'найновішим', тобто використаним щойно); якщо ключа немає — `undefined` або `-1`.\n3. Метод `put(key, value)` додає нове значення (і робить його 'найновішим').\n4. Якщо ліміт перевищено, видаляйте 'найстаріший' (найрідше використовуваний) елемент. Доречно використовувати `Map`, оскільки вона зберігає порядок вставки.",
     examples: ["const cache = new LRUCache(2);"],
     functionName: "testLRU",
+    hint: "Використовуй Map, бо вона зберігає порядок вставки. При кожному зверненні (get) або оновленні (put) переставляй елемент у кінець.",
     starterCode: "function testLRU() {\n  return 'class';\n}",
     tests: [
       { input: [], expected: "class" }

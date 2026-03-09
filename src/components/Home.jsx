@@ -17,6 +17,11 @@ function Home({ stats, startQuiz }) {
     { id: 'dom', label: '📄 Робота з DOM', icon: '📄' },
     { id: 'events', label: '🎯 Події та Обробники', icon: '🎯' },
     { id: 'async', label: '⏳ Асинхронність', icon: '⏳' },
+    { id: 'es6_plus', label: '⚡ ES6+ Можливості', icon: '⚡' },
+    { id: 'prototypes_classes', label: '🧬 Прототипи та Класи', icon: '🧬' },
+    { id: 'design_patterns', label: '🏗️ Паттерни Проектування', icon: '🏗️' },
+    { id: 'network_web', label: '🌐 Мережа та HTTP', icon: '🌐' },
+    { id: 'build_tools', label: '🛠️ Збірка та Інструменти', icon: '🛠️' },
   ];
 
   const avgScore = stats.totalQuestions > 0 ? Math.round((stats.totalScore / stats.totalQuestions) * 100) : 0;
@@ -64,6 +69,36 @@ function Home({ stats, startQuiz }) {
           <span className="stat-label">Сер. бал:</span>
           <span className="stat-value">{avgScore}%</span>
         </div>
+      </div>
+
+      {/* Exam Mode Card */}
+      <div className="exam-mode-card glass" style={{
+        padding: '24px',
+        borderRadius: '20px',
+        marginBottom: '30px',
+        background: 'linear-gradient(135deg, rgba(255, 165, 0, 0.15) 0%, rgba(255, 215, 0, 0.15) 100%)',
+        border: '1px solid var(--accent)',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '12px',
+        alignItems: 'flex-start',
+        position: 'relative',
+        overflow: 'hidden'
+      }}>
+        <div style={{ position: 'absolute', top: '-20px', right: '-20px', fontSize: '8rem', opacity: '0.05', pointerEvents: 'none' }}>🎓</div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <span style={{ fontSize: '1.5rem' }}>🎓</span>
+          <h3 style={{ margin: 0, fontSize: '1.4rem', color: 'var(--text-main)', fontWeight: '700' }}>Режим Екзамену</h3>
+          <span className="badge" style={{ background: 'rgba(255, 165, 0, 0.2)', color: 'var(--accent)', padding: '4px 10px', borderRadius: '12px', fontSize: '0.85rem', fontWeight: 'bold' }}>Випадкові питання</span>
+        </div>
+        <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: '1.05rem' }}>Перевір свої знання з усіх тем у випадковому порядку.</p>
+        <button
+          className="btn primary-btn"
+          style={{ padding: '12px 24px', marginTop: '10px', fontSize: '1rem', width: 'auto', alignSelf: 'flex-start', borderRadius: '12px', background: 'var(--accent)', borderColor: 'var(--accent)' }}
+          onClick={() => startQuiz([], 30, true)} // Pass true for exam mode
+        >
+          Почати Екзамен (30 питань)
+        </button>
       </div>
 
       <h3 className="section-title">Обери модулі для тестування (можна кілька):</h3>

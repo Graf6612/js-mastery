@@ -24,7 +24,45 @@ const Nav = () => {
   );
 };
 
+// Login Component
+const Login = ({ onLogin }) => {
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (password === '123456781') {
+      onLogin();
+    } else {
+      setError('Невірний пароль');
+    }
+  };
+
+  return (
+    <div className="login-container">
+      <div className="login-card">
+        <div className="login-icon">🔒</div>
+        <h2>Вхід</h2>
+        <p>Введіть пароль для доступу до JS Mastery</p>
+        <form onSubmit={handleSubmit} className="login-form">
+          <input
+            type="password"
+            className="login-input"
+            placeholder="Введіть пароль..."
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            autoFocus
+          />
+          <button type="submit" className="login-btn">Увійти</button>
+          {error && <div className="error-msg">{error}</div>}
+        </form>
+      </div>
+    </div>
+  );
+};
+
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(() => storage.get('isAuth', false));
   const [screen, setScreen] = useState('home');
   const [currentTopic, setCurrentTopic] = useState(null);
   const [questions, setQuestions] = useState([]);
@@ -37,37 +75,40 @@ function App() {
     // Other effects can go here if needed
   }, []);
 
-  const startQuiz = (topicsArray, count = 10) => {
+  const handleLoginSuccess = () => {
+    setIsAuthenticated(true);
+    storage.setInstant('isAuth', true);
+  };
+
+  if (!isAuthenticated) {
+    return <Login onLogin={handleLoginSuccess} />;
+  }
+
+  const startQuiz = (topicsArray, count = 10, isExam = false) => {
     let allSelectedQuestions = [];
     const passedMap = storage.get('passedQuestions', {});
 
-    // Collect available questions from all selected topics
-    topicsArray.forEach(topic => {
+    // If it's an exam, use all available topics
+    const finalTopics = isExam ? Object.keys(quizData) : topicsArray;
+
+    finalTopics.forEach(topic => {
       const allTopicQuestions = quizData[topic] || [];
       const passedForTopic = passedMap[topic] || [];
 
       let availableQuestions = allTopicQuestions.filter(q => !passedForTopic.includes(q.question));
 
-      // If a topic is completely answered, reset its progress for the pool
       if (availableQuestions.length === 0 && allTopicQuestions.length > 0) {
         availableQuestions = allTopicQuestions;
-        passedMap[topic] = []; // Clear local tracker copy
       }
 
-      // Tag questions with their topic so we know where to save progress later
       const taggedQuestions = availableQuestions.map(q => ({ ...q, originalTopic: topic }));
       allSelectedQuestions = [...allSelectedQuestions, ...taggedQuestions];
     });
 
-    // Update storage if any topics were reset
-    storage.setInstant('passedQuestions', passedMap);
-
-    // Shuffle and pick up to requested count questions
     const selectedQuestions = [...allSelectedQuestions].sort(() => Math.random() - 0.5).slice(0, count);
 
     setQuestions(selectedQuestions);
-    // Store array of topics for later or a generic label
-    setCurrentTopic(topicsArray.length === 1 ? topicsArray[0] : 'mixed');
+    setCurrentTopic(isExam ? 'exam' : (topicsArray.length === 1 ? topicsArray[0] : 'mixed'));
     setScore(0);
     setScreen('quiz');
   };
@@ -152,6 +193,10 @@ function App() {
             <Route path="/history" element={<History />} />
           </Routes>
         </main>
+
+        <footer className="footer-mini">
+          <p>Created by Yaroslav Horodynskyi</p>
+        </footer>
       </div>
     </Router>
   );

@@ -28,6 +28,11 @@ function MistakeReview() {
           {mistakes.map((item, index) => (
             <div key={index} className="mistake-item">
               <p className="mistake-q">{item.question}</p>
+              {item.code && (
+                <div className="code-block" style={{ fontSize: '0.8rem', padding: '10px', marginBottom: '10px' }}>
+                  <code className="code-text">{item.code}</code>
+                </div>
+              )}
               <p className="mistake-a">❌ Твоя відповідь: {item.userAnswer}</p>
               <p className="mistake-c">✅ Правильна: {item.correctAnswer}</p>
               <p className="mistake-theory">💡 {item.theory}</p>
